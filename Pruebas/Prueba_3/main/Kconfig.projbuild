@@ -1,0 +1,129 @@
+menu "Prueba 3: consumo del nodo"
+
+menu "01. Nodo y ventana de medición"
+
+config PRUEBA_ID_NODO
+    int "Identificador del nodo"
+    range 1 4
+    default 1
+
+config PRUEBA_PERFIL_NODO
+    int "Perfil: 1=C3 DHT22, 2=C3 DHT22+luz, 3=C3 DHT22, 4=WROOM humedad"
+    range 1 4
+    default 1
+
+config PRUEBA_CPU_ACTIVO
+    int "CPU activo (0=desactivado, 1=activado)"
+    range 0 1
+    default 1
+
+config PRUEBA_TIEMPO_VENTANA_ACTIVA_S
+    int "Duración de la ventana activa (s; 0=indefinida)"
+    range 0 86400
+    default 60
+
+config PRUEBA_ESPERA_INICIAL_S
+    int "Pausa inicial para conectar el instrumento (s)"
+    range 0 600
+    default 5
+
+config PRUEBA_INTERVALO_LECTURAS_S
+    int "Tiempo entre lecturas de sensores (s)"
+    range 2 86400
+    default 600
+
+endmenu
+
+menu "02. Comunicación ESP-NOW"
+
+config PRUEBA_ESPNOW_RECEPCION
+    int "Escuchar ESP-NOW (0=desactivado, 1=activado)"
+    range 0 1
+    default 0
+    help
+        Mantiene Wi-Fi y ESP-NOW activos, sin ahorro de radio, durante la ventana activa.
+        No procesa ni valida los datos recibidos.
+
+config PRUEBA_ESPNOW_TRANSMISION
+    int "Transmitir paquetes de prueba (0=desactivado, 1=activado)"
+    range 0 1
+    default 0
+    help
+        Envía paquetes broadcast sin confirmación ni validación de recepción.
+
+config PRUEBA_ESPNOW_CANAL
+    int "Canal ESP-NOW (igual en todos los equipos)"
+    range 1 13
+    default 1
+
+config PRUEBA_ESPNOW_INTERVALO_TRANSMISION_MS
+    int "Intervalo entre transmisiones (ms)"
+    range 10 60000
+    default 1000
+
+endmenu
+
+menu "03. Sensores y cargas conectadas"
+
+config PRUEBA_SENSOR_DHT22
+    int "DHT22 conectado (0=no, 1=sí)"
+    range 0 1
+    default 0
+
+config PRUEBA_SENSOR_VEML7700
+    int "VEML7700 conectado (0=no, 1=sí)"
+    range 0 1
+    default 0
+
+config PRUEBA_SENSOR_ADS1115
+    int "ADS1115 conectado (0=no, 1=sí)"
+    range 0 1
+    default 0
+
+config PRUEBA_SENSOR_SEN0193_1
+    int "SEN0193 número 1 conectada (0=no, 1=sí)"
+    range 0 1
+    default 0
+
+config PRUEBA_SENSOR_SEN0193_2
+    int "SEN0193 número 2 conectada (0=no, 1=sí)"
+    range 0 1
+    default 0
+
+config PRUEBA_SENSOR_SEN0193_3
+    int "SEN0193 número 3 conectada (0=no, 1=sí)"
+    range 0 1
+    default 0
+
+config PRUEBA_SENSOR_SEN0193_4
+    int "SEN0193 número 4 conectada (0=no, 1=sí)"
+    range 0 1
+    default 0
+
+config PRUEBA_CARGA_DIVISOR_BATERIA
+    int "Divisor de batería 220 kΩ + 100 kΩ conectado (0=no, 1=sí)"
+    range 0 1
+    default 0
+
+config PRUEBA_CARGA_TPS63020
+    int "TPS63020 en ruta de alimentación (0=no, 1=sí)"
+    range 0 1
+    default 0
+
+endmenu
+
+menu "04. Ahorro de energía"
+
+config PRUEBA_USAR_SUENO_PROFUNDO
+    int "Entrar a sueño profundo al terminar la ventana (0=no, 1=sí)"
+    range 0 1
+    default 0
+
+config PRUEBA_DURACION_SUENO_PROFUNDO_S
+    int "Duración del sueño profundo (s)"
+    range 1 86400
+    default 600
+
+endmenu
+
+endmenu

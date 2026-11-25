@@ -11,10 +11,13 @@
 
 
 // CONFIGURACIÓN
-// GPIO34 = ADC1_CHANNEL_6 en ESP32
-#define ADC_CHANNEL       ADC_CHANNEL_6
-// Pin de datos del DHT22
-#define DHT_PIN           GPIO_NUM_18
+// En ESP32-C3, GPIO4 corresponde a ADC1_CHANNEL_4.
+// Conecte aquí temporalmente la salida analógica del sensor.
+#define ADC_GPIO          GPIO_NUM_4
+#define ADC_CHANNEL       ADC_CHANNEL_4
+// Pin de datos del DHT22.
+// GPIO18 y GPIO19 están reservados para el USB nativo del ESP32-C3.
+#define DHT_PIN           GPIO_NUM_5
 // Tiempo máximo de espera para cambios de nivel del DHT22
 #define MICRO_SEGUNDOS    200
 

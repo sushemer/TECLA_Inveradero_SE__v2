@@ -21,7 +21,11 @@ static const char *TAG = "GATEWAY";
 
 // MAC Wi-Fi STA del nodo negro
 static const uint8_t node_mac[ESP_NOW_ETH_ALEN] = {
-    0xD4, 0xE9, 0xF4, 0x66, 0xB3, 0xC4
+    //0xFF, 0xFF, 0xFF, 0xFF, 0xFF, 0xFF
+    //0x3c,0x0f,0x02,0xa3,0xde,0xec //mio
+    0x80,0x53,0xe0,0x9f,0x09,0x78 //de los que llegaron
+    //0xac,0x27,0x6e,0x71,0x46,0x60 //compañero hamed
+    //0xD4, 0xE9, 0xF4, 0x66, 0xB3, 0xC4
 };
 
 
@@ -45,7 +49,8 @@ static void espnow_recv_cb(const esp_now_recv_info_t *recv_info,const uint8_t *d
 
     // Verificar origen
     if (memcmp( recv_info->src_addr,node_mac,ESP_NOW_ETH_ALEN ) != 0) {
-        ESP_LOGW(TAG,"Paquete recibido de dispositivo desconocido");
+        ESP_LOGW(TAG, "Paquete recibido de dispositivo desconocido: " MACSTR,
+            MAC2STR(recv_info->src_addr));
         return;
     }
 

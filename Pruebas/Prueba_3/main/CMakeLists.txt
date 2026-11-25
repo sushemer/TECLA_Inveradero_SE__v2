@@ -1,0 +1,19 @@
+idf_component_register(
+    SRCS
+        "inicio_prueba.c"
+        "configuracion/configuracion_prueba.c"
+        "comunicacion/prueba_espnow.c"
+        "sensores/bus_i2c.c"
+        "sensores/lectura_dispositivos.c"
+        "sensores/lectura_dht22.c"
+        "sensores/lectura_veml7700.c"
+        "sensores/lectura_ads1115.c"
+        "energia/sueno_profundo.c"
+    INCLUDE_DIRS
+        "."
+        "configuracion"
+        "comunicacion"
+        "sensores"
+        "energia"
+    PRIV_REQUIRES esp_wifi esp_hw_support esp_rom esp_timer driver log
+)
