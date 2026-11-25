@@ -1,0 +1,23 @@
+menu "TECLA gateway"
+
+config TECLA_GATEWAY_API_BASE_URL
+    string "API base URL (vacía = modo local/offline)"
+    default ""
+    help
+        Base URL del API, por ejemplo https://servidor.example/api.
+        No incluya usuario, contraseña, query ni fragmento en la URL.
+        Vacía desactiva conexión STA y POST central; el AP local y ESP-NOW
+        continúan activos. En el firmware actual se concatena /lecturas;
+        las rutas gateway v1 y autenticación aún no están integradas.
+
+config TECLA_GATEWAY_WIRE_V3_RADIO
+    bool "Enable experimental v3 telemetry receiver"
+    depends on ESP_WIFI_ENABLED
+    default n
+    help
+        Route v3 telemetry to the bounded volatile dispatcher using only the
+        explicit firmware_node_id/MAC bindings in gateway_config.local.h.
+        Disabled by default until target build and physical interoperability
+        are verified. No central commit or CCMP is provided by this option.
+
+endmenu
