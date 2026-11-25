@@ -1,0 +1,21 @@
+menu "TECLA node commissioning"
+
+config TECLA_NODE_IDENTITY_CONSOLE
+	bool "Enable physical identity provisioning console"
+	depends on ESP_CONSOLE_UART
+	default n
+	help
+	  Enable an interactive identity command on the configured ESP-IDF UART
+	  console. This is intended for authorized physical commissioning only.
+	  Keep disabled in deployed builds unless local serial access is controlled.
+
+config TECLA_NODE_WIRE_V3_RADIO
+	bool "Enable experimental v3 ESP-NOW telemetry sender"
+	depends on ESP_WIFI_ENABLED
+	default n
+	help
+	  Use the provisioned firmware_node_id and the local gateway MAC/channel
+	  from node_config.local.h. Disabled by default until target build and
+	  physical radio interoperability are verified. No CCMP is configured.
+
+endmenu
